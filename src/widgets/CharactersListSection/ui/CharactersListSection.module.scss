@@ -1,0 +1,23 @@
+.characterslistpage{
+   background-color: #dfdddd;
+   
+    &__title{
+        text-align: center;
+        font-size: 27px;
+        font-weight: bold;
+        padding: 25px 0;
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding-bottom: 15px;
+    }
+    &__loading{
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 23px;        
+    }
+}

@@ -1,0 +1,17 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+align-items: center;
+gap: 10px;
+
+    &__prev,&__next{
+        background-color: #82b3fd;
+        color: white;
+        font-size: 20px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    &__next{}
+    &__info{}
+}

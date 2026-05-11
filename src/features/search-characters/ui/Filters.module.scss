@@ -1,0 +1,21 @@
+.filters {
+    display: flex;
+    gap: 10px;    
+    min-height: 50px;
+    border-radius: 5px;    
+
+    &__input {
+        padding: 0 10px;
+        background-color: #fff;
+        width: 100%;
+        border: 1px solid #b8b8b8;
+    }
+
+    &__select {                
+        padding: 0 20px;
+        background-color: #fff;
+        border: 1px solid #b8b8b8;
+        border-radius: 5px;
+    }
+
+}

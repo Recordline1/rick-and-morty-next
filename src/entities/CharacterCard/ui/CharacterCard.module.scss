@@ -1,0 +1,50 @@
+.card {
+    position: relative;
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px #b8b8b8;
+
+    &__link {
+        overflow: hidden;
+        display: block;
+        border: 3px solid #000;
+    }
+
+    &__img {
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__titleblock {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+       margin: 10px 0;
+    }
+
+    &__name {
+        font-size: 21px;
+    }
+
+    &__status {}
+
+    &__like {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        border-radius: 50%;        
+        cursor: pointer;
+    }
+    &__info{
+       pointer-events: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}

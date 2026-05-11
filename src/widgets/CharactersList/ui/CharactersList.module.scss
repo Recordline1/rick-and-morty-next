@@ -1,0 +1,12 @@
+.characterslist {
+    padding: 50px 15px 20px 15px;    
+    border: 1px solid #b8b8b8;
+    background-color: #f1ffd0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    @media  (max-width: 450px){
+        margin: 0 -15px;        
+    }
+}

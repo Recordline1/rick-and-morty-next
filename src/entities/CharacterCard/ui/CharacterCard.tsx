@@ -24,7 +24,12 @@ export const CharacterCard = ({ character, likeSlot }: CharacterCardProps) => {
                 {likeSlot}
             </div>
             <p className={styles.card__status}>{character.status}</p>
-            <Image className={styles.card__info} src={info} alt={"ditals character info"} width={20} height={20} />
+            <Image
+             className={styles.card__info} 
+             src={info} alt={"ditals character info"} 
+             width={20} height={20}
+             
+              />
         </div>
     )
 

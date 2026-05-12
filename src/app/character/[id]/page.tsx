@@ -4,13 +4,29 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import styles from './CharacterPage.module.scss';
 
-interface Props {
-  params:Promise<{ id: string }>;
+
+export async function generateStaticParams() {
+
+  const pages = await Promise.all([
+    fetch('https://rickandmortyapi.com/api/character?page=1').then(r => r.json()),
+    fetch('https://rickandmortyapi.com/api/character?page=2').then(r => r.json()),
+  ]);
+
+  const characters = pages.flatMap(p => p.results);
+
+  return characters.map((char: { id: number }) => ({
+    id: String(char.id),
+  }));
 }
 
-// Динамический title для каждого персонажа
+
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-const {id} =  await params;
+  const { id } = await params;
 
   const character = await getCharacterById(id);
 

@@ -17,7 +17,11 @@ export const CharacterCard = ({ character, likeSlot }: CharacterCardProps) => {
     return (
         <div className={styles.card}>
             <Link className={styles.card__link} href={`/character/${character.id}`}>
-                <img className={styles.card__img} src={character.image} alt={character.name} />
+                <Image
+                 className={styles.card__img}
+                  src={character.image} alt={character.name}
+                  width={290} height={290}
+                   />
             </Link>
             <div className={styles.card__titleblock}>
                 <p className={styles.card__name}>{character.name}</p>

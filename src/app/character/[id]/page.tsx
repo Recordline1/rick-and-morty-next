@@ -1,20 +1,21 @@
-import { getCharacterById } from '@/shared/api/characterApi';
+import { getCharacterById, getCharacters } from '@/shared/api/characterApi';
 import Link from "next/link";
 import Image from 'next/image';
 import { Metadata } from 'next';
 import styles from './CharacterPage.module.scss';
 
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+  status: string;
+  species: string;
+}
 
 export async function generateStaticParams() {
+  const characters = await getCharacters();
 
-  const pages = await Promise.all([
-    fetch('https://rickandmortyapi.com/api/character?page=1').then(r => r.json()),
-    fetch('https://rickandmortyapi.com/api/character?page=2').then(r => r.json()),
-  ]);
-
-  const characters = pages.flatMap(p => p.results);
-
-  return characters.map((char: { id: number }) => ({
+  return characters.results.slice(0, 5).map((char:Character) => ({
     id: String(char.id),
   }));
 }

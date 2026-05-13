@@ -49,3 +49,12 @@
     &:nth-child(3) { width: 160px; }
     &:nth-child(4) { width: 120px; }
   }
+
+  .characterpage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }

@@ -1,34 +1,39 @@
-.notfound {
-  text-align: center;
+.wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2rem 1rem;
-  display: grid;
-  gap: 1rem;
-  justify-items: center;
-  border: 1px dashed var(--hud-border);
+}
+
+.panel {
+  max-width: 28rem;
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--hud-border);
   border-radius: var(--hud-radius);
-  background: var(--hud-surface-2);
+  background: var(--hud-surface);
+  box-shadow: var(--hud-shadow);
+  text-align: center;
 }
 
-.notfound__text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--hud-text);
-}
-
-.notfound__code {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+.title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--hud-danger);
+  margin-bottom: 0.75rem;
 }
 
-.notfound__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+.message {
+  font-size: 0.9rem;
+  color: var(--hud-text-dim);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.retry {
   font: inherit;
   font-size: 0.75rem;
   font-weight: 700;
@@ -38,7 +43,7 @@
   background: var(--hud-accent);
   border: 1px solid var(--hud-border);
   border-radius: var(--hud-radius);
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.25rem;
   box-shadow: 0 0 12px var(--hud-border-glow);
   transition: filter var(--hud-transition), transform var(--hud-transition);
 

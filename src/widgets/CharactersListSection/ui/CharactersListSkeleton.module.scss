@@ -1,0 +1,79 @@
+@keyframes hud-shimmer {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 120% 0;
+  }
+}
+
+.skeleton {
+  border: 1px solid var(--hud-border);
+  border-radius: var(--hud-radius);
+  background: var(--hud-surface-2);
+  padding: 1.25rem 1rem;
+  box-shadow: var(--hud-shadow);
+}
+
+.skeleton__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skeleton__card {
+  width: 290px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+%skeleton-block {
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border);
+  background: linear-gradient(
+    105deg,
+    var(--hud-surface-2) 0%,
+    var(--hud-surface) 45%,
+    var(--hud-surface-2) 90%
+  );
+  background-size: 200% 100%;
+  animation: hud-shimmer 1.35s ease-in-out infinite;
+}
+
+.skeleton__thumb {
+  @extend %skeleton-block;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.skeleton__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.skeleton__name {
+  @extend %skeleton-block;
+  flex: 1;
+  height: 1.1rem;
+}
+
+.skeleton__dot {
+  @extend %skeleton-block;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+}
+
+.skeleton__badge {
+  @extend %skeleton-block;
+  width: 5rem;
+  height: 1.5rem;
+}

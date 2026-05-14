@@ -27,23 +27,41 @@ export const Filters = () => {
     return (
 
         <div className={styles.filters}>
-            <input
-                className={styles.filters__input}
-                type="text"
-                placeholder="Search characters..."
-                defaultValue={searchParams?.get('name') || ''}
-                onChange={(e) => updateSearch('name', e.target.value)}
-            />
+            <div className={styles.filters__field}>
+                <label className={styles.filters__label} htmlFor="character-search">
+                    Query_string
+                </label>
+                <input
+                    id="character-search"
+                    className={styles.filters__input}
+                    type="search"
+                    name="name"
+                    autoComplete="off"
+                    placeholder="> enter subject name..."
+                    defaultValue={searchParams?.get('name') || ''}
+                    onChange={(e) => updateSearch('name', e.target.value)}
+                    aria-label="Search characters by name"
+                />
+            </div>
 
-            <select
-                className={styles.filters__select}
-                value={searchParams?.get('status') ?? ''}
-                onChange={(e) => updateSearch('status', e.target.value)}>
-                <option value="">All Statuses</option>
-                <option value="alive">Alive</option>
-                <option value="dead">Dead</option>
-                <option value="unknown">Unknown</option>
-            </select>
+            <div className={styles.filters__selectWrap}>
+                <label className={styles.filters__label} htmlFor="character-status">
+                    Vitals_filter
+                </label>
+                <select
+                    id="character-status"
+                    className={styles.filters__select}
+                    name="status"
+                    value={searchParams?.get('status') ?? ''}
+                    onChange={(e) => updateSearch('status', e.target.value)}
+                    aria-label="Filter by life status"
+                >
+                    <option value="">All statuses</option>
+                    <option value="alive">Alive</option>
+                    <option value="dead">Dead</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
         </div>
 
     );

@@ -10,31 +10,42 @@ interface CharacterCardProps {
     likeSlot?: React.ReactNode;
 }
 
-
-
+function statusKey(status: string): 'alive' | 'dead' | 'unknown' {
+    const s = status.toLowerCase();
+    if (s === 'alive' || s === 'dead' || s === 'unknown') return s;
+    return 'unknown';
+}
 
 export const CharacterCard = ({ character, likeSlot }: CharacterCardProps) => {
+    const label = `Open dossier: ${character.name}`;
     return (
-        <div className={styles.card}>
-            <Link className={styles.card__link} href={`/character/${character.id}`}>
+        <article className={styles.card}>
+            <Link
+                className={styles.card__link}
+                href={`/character/${character.id}`}
+                aria-label={label}
+            >
                 <Image
-                 className={styles.card__img}
-                  src={character.image} alt={character.name}
-                  width={290} height={290}
-                   />
+                    className={styles.card__img}
+                    src={character.image} alt={character.name}
+                    width={290} height={290}
+                    loading="eager"
+                />
             </Link>
             <div className={styles.card__titleblock}>
-                <p className={styles.card__name}>{character.name}</p>
-                {likeSlot}
+                <h2 className={styles.card__name}>{character.name}</h2>
+                {likeSlot ? <div className={styles.card__like}>{likeSlot}</div> : null}
             </div>
-            <p className={styles.card__status}>{character.status}</p>
+            <p className={styles.card__status} data-status={statusKey(character.status)}>
+                {character.status}
+            </p>
             <Image
-             className={styles.card__info} 
-             src={info} alt={"ditals character info"} 
-             width={20} height={20}
-             
-              />
-        </div>
+                className={styles.card__info}
+                src={info} alt=""
+                width={20} height={20}
+                aria-hidden
+            />
+        </article>
     )
 
 }

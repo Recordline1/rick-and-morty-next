@@ -1,0 +1,41 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hud-accent-text);
+  background: var(--hud-accent);
+  border: 1px solid var(--hud-border);
+  border-radius: var(--hud-radius);
+  box-shadow: 0 0 12px var(--hud-border-glow);
+  transition: transform var(--hud-transition), box-shadow var(--hud-transition),
+    filter var(--hud-transition);
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hud-accent);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.toggle__glyph {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.toggle__text {
+  min-width: 3.25rem;
+  text-align: left;
+}

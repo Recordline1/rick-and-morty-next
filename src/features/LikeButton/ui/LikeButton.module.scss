@@ -1,0 +1,31 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--hud-text);
+  background: var(--hud-surface);
+  border: 1px solid var(--hud-border);
+  border-radius: 50%;
+  transition: border-color var(--hud-transition), transform var(--hud-transition),
+    box-shadow var(--hud-transition), color var(--hud-transition);
+
+  &:hover {
+    border-color: var(--hud-accent);
+    box-shadow: 0 0 12px var(--hud-border-glow);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  &[aria-pressed='true'] {
+    color: var(--hud-danger);
+    border-color: var(--hud-danger);
+    box-shadow: 0 0 14px rgba(255, 100, 120, 0.25);
+  }
+}

@@ -12,7 +12,7 @@ export async function toggleLikeAction(characterId: number) {
 
     return { success: true };
 
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to toggle like' };
   }
 }

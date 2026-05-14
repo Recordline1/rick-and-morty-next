@@ -4,6 +4,7 @@ import { getCharacters } from '@shared/api/characterApi'
 import { Suspense } from 'react';
 import { NotFound } from '@features/search-characters/ui/NotFound'
 import { Pagination } from '@features/pagination/ui/Pagination'
+import { CharactersListSkeleton } from './CharactersListSkeleton'
 import styles from './CharactersListSection.module.scss'
 
 interface CharactersListSectionProps {
@@ -24,15 +25,20 @@ export const CharactersListSection = async ({ name, status, page }: CharactersLi
   return (
     <>
       <section className={styles.characterslistpage}>
-        <div className={styles.characterslistpage__container}>
+        <div className={`${styles.characterslistpage__container} __container`}>
           <h1 className={styles.characterslistpage__title}>Rick and Morty</h1>
+          <div className={styles.characterslistpage__toolbar}>
+            <span>Multiverse_index</span>
+            <span aria-hidden>·</span>
+            <span>Encrypted_Uplink</span>
+          </div>
           <Suspense fallback={null}>
             <Filters />
           </Suspense>
           {characters.results.length === 0 ? (<NotFound name={name} />) : (
-            <Suspense fallback={<div className={styles.characterslistpage__loading}>Loading characters...</div>}>
+            <Suspense fallback={<CharactersListSkeleton />}>
               <CharactersList characters={characters.results} />
-            </ Suspense>
+            </Suspense>
           )}
           <Suspense fallback={null}>
             <Pagination totalPages={totalPages} currentPage={currentPage} />
@@ -42,5 +48,4 @@ export const CharactersListSection = async ({ name, status, page }: CharactersLi
     </>
   );
 };
-
 

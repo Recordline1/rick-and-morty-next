@@ -16,37 +16,40 @@ export const Pagination = ({ totalPages, currentPage }: PaginationProps) => {
 
 
   const handlePageChange = useDebouncedCallback((pageNumber: number) => {
-   
+
     const params = new URLSearchParams(searchParams?.toString());
     params.set('page', pageNumber.toString());
 
-   
+
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
-    // scroll: false предотвращает скролл наверх страницы при клике
   }, 300);
 
   if (!totalPages || totalPages <= 1) return null;
 
   return (
-    <div className={styles.pagination}>
+    <nav className={styles.pagination} aria-label="Pagination">
       <button className={styles.pagination__prev}
+        type="button"
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage <= 1}
+        aria-label={`Go to previous page, page ${currentPage - 1}`}
       >
         Prev
       </button>
 
-      <span
-      className={styles.pagination__info}
-      >Page {currentPage} of {totalPages}</span>
+      <span className={styles.pagination__info}>
+        Page {currentPage} / {totalPages}
+      </span>
 
       <button
+        type="button"
         className={styles.pagination__next}
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
+        aria-label={`Go to next page, page ${currentPage + 1}`}
       >
         Next
       </button>
-    </div>
+    </nav>
   );
 };

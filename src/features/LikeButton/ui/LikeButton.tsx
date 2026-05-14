@@ -4,8 +4,6 @@ import { useLikesContext } from '@features/likes/ui/LikesProvider';
 import { toggleLikeAction } from '@features/likes/api/toggleLikeAction';
 import styles from './LikeButton.module.scss'
 
-
-
 export function LikeButton({ characterId }: { characterId: number }) {
   const { likedIds, toggle } = useLikesContext();
   const isLiked = likedIds.has(characterId);
@@ -21,8 +19,14 @@ export function LikeButton({ characterId }: { characterId: number }) {
   }
 
   return (
-    <button className={styles.button} onClick={handleClick} aria-pressed={isLiked}>
-      {isLiked ? '❤️' : '🤍'}
+    <button
+      type="button"
+      className={styles.button}
+      onClick={handleClick}
+      aria-pressed={isLiked}
+      aria-label={isLiked ? 'Remove from favorites' : 'Add to favorites'}
+    >
+      <span aria-hidden>{isLiked ? '♥' : '♡'}</span>
     </button>
   );
 }

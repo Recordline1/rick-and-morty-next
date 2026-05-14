@@ -1,0 +1,41 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS v4: register design tokens for generated utilities (see https://tailwindcss.com/docs/theme)."
+    },
+    {
+      "name": "@source",
+      "description": "Tailwind CSS v4: add content paths for class detection."
+    },
+    {
+      "name": "@plugin",
+      "description": "Tailwind CSS v4: load a JavaScript plugin."
+    },
+    {
+      "name": "@config",
+      "description": "Tailwind CSS v4: reference a legacy JS config file."
+    },
+    {
+      "name": "@utility",
+      "description": "Tailwind CSS v4: define a custom utility."
+    },
+    {
+      "name": "@variant",
+      "description": "Tailwind CSS v4: define a custom variant."
+    },
+    {
+      "name": "@custom-variant",
+      "description": "Tailwind CSS v4: define a named custom variant."
+    },
+    {
+      "name": "@apply",
+      "description": "Tailwind CSS: inline utility classes into a rule."
+    },
+    {
+      "name": "@reference",
+      "description": "Tailwind CSS v4: import theme without emitting CSS."
+    }
+  ]
+}

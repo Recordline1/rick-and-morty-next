@@ -1,5 +1,3 @@
 // Interface definition for the slice features/search-characters
 
-export interface IFeaturesSearchCharacters {
-  // Add interface properties here
-}
+export type IFeaturesSearchCharacters = Record<string, never>;

@@ -15,7 +15,7 @@ interface Character {
 export async function generateStaticParams() {
   const characters = await getCharacters();
 
-  return characters.results.slice(0, 5).map((char:Character) => ({
+  return characters.results.slice(0, 5).map((char: Character) => ({
     id: String(char.id),
   }));
 }
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${character.name} — Rick and Morty`,
-    description: `${character.species}, ${character.status}. Из ${character.origin.name}`,
+    description: `${character.name}: ${character.species}, status ${character.status}. Origin: ${character.origin.name}.`,
     openGraph: {
       images: [character.image],
     },
@@ -54,16 +54,16 @@ export default async function CharacterPage({
     <main className={styles.main}>
       <div className='__container'>
         <div className={styles.characterpage}>
-          <Link className={styles.characterpage__back} href="/">← Back to main</Link>
+          <Link className={styles.characterpage__back} href="/">← Return to index</Link>
           <div className={styles.characterpage__character}>
             <Image className={styles.characterpage__img} src={character.image} loading="eager" width={300} height={300} alt={character.name} />
             <div className={styles.characterpage__characterinfo}>
               <h1 className={styles.characterpage__name}>{character.name}</h1>
-              <p className={styles.characterpage__item}>status: {character.status}</p>
-              <p className={styles.characterpage__item}>gender: {character.gender}</p>
-              <p className={styles.characterpage__item}>species: {character.species}</p>
-              <p className={styles.characterpage__item}>created: {character.created}</p>
-              <p className={styles.characterpage__item}>url: {character.url}</p>
+              <p className={styles.characterpage__item}><span className={styles.characterpage__key}>Status</span>{character.status}</p>
+              <p className={styles.characterpage__item}><span className={styles.characterpage__key}>Gender</span>{character.gender}</p>
+              <p className={styles.characterpage__item}><span className={styles.characterpage__key}>Species</span>{character.species}</p>
+              <p className={styles.characterpage__item}><span className={styles.characterpage__key}>Created</span>{character.created}</p>
+              <p className={styles.characterpage__item}><span className={styles.characterpage__key}>URL</span>{character.url}</p>
             </div>
           </div>
         </div>

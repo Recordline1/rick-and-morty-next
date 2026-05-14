@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 import { getLikes, toggleLike } from '@entities/likes/lib/storage';
 
 interface LikesContextValue {
@@ -11,14 +11,12 @@ interface LikesContextValue {
 const LikesContext = createContext<LikesContextValue | null>(null);
 
 export function LikesProvider({ children }: { children: React.ReactNode }) {
-  const [likedIds, setLikedIds] = useState<Set<number>>(new Set());
-
-  useEffect(() => {
-    setLikedIds(getLikes()); // одно чтение localStorage на весь список
-  }, []);
+  const [likedIds, setLikedIds] = useState<Set<number>>(() =>
+    typeof window === 'undefined' ? new Set<number>() : getLikes(),
+  );
 
   const toggle = useCallback((id: number) => {
-    setLikedIds(prev => toggleLike(prev, id)); // пишет в storage + возвращает новый Set
+    setLikedIds((prev) => toggleLike(prev, id));
   }, []);
 
   return (
@@ -30,6 +28,6 @@ export function LikesProvider({ children }: { children: React.ReactNode }) {
 
 export function useLikesContext() {
   const ctx = useContext(LikesContext);
-  if (!ctx) throw new Error('useLikesContext: нет LikesProvider выше');
+  if (!ctx) throw new Error('useLikesContext must be used within LikesProvider');
   return ctx;
 }

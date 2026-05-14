@@ -1,5 +1,3 @@
-// Interface definition for the slice pages/Home
+// Interface definition for the slice widgets/CharactersList
 
-export interface IPagesHome {
-  // Add interface properties here
-}
+export type IPagesHome = Record<string, never>;

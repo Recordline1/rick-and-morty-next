@@ -1,12 +1,19 @@
 .characterslist {
-    padding: 50px 15px 20px 15px;    
-    border: 1px solid #b8b8b8;
-    background-color: #f1ffd0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    @media  (max-width: 450px){
-        margin: 0 -15px;        
-    }
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--hud-border);
+  border-radius: var(--hud-radius);
+  background: var(--hud-surface);
+  box-shadow: var(--hud-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  transition: border-color var(--hud-transition), box-shadow var(--hud-transition);
+
+  @media (max-width: 450px) {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
 }

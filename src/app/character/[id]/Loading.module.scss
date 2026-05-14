@@ -1,60 +1,99 @@
+@keyframes hud-shimmer {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 120% 0;
+  }
+}
 
-@keyframes shimmer {
-    0%   { background-position: -400px 0; }
-    100% { background-position: 400px 0; }
-  }
-  
-  %skeleton-base {
-    background: linear-gradient(
-      90deg,
-      #2a2a2a 25%,
-      #3a3a3a 50%,
-      #2a2a2a 75%
-    );
-    background-size: 400px 100%;
-    animation: shimmer 1.4s ease infinite;
-    border-radius: 6px;
-  }
-  
-  .skeleton__back {
-    @extend %skeleton-base;
-    width: 140px;
-    height: 20px;
-    margin-bottom: 24px;
-  }
-  
-  .skeleton__image {
-    @extend %skeleton-base;
-    width: 300px;
-    height: 300px;
-    border-radius: 12px;
-    flex-shrink: 0;
-  }
-  
-  .skeleton__title {
-    @extend %skeleton-base;
-    width: 220px;
-    height: 32px;
-    margin-bottom: 16px;
-  }
-  
-  .skeleton__line {
-    @extend %skeleton-base;
-    width: 180px;
-    height: 18px;
-    margin-bottom: 10px;
-  
-   
-    &:nth-child(2) { width: 140px; }
-    &:nth-child(3) { width: 160px; }
-    &:nth-child(4) { width: 120px; }
-  }
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 2rem;
+}
 
-  .characterpage{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+%skeleton-block {
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border);
+  background: linear-gradient(
+    105deg,
+    var(--hud-surface-2) 0%,
+    var(--hud-surface) 45%,
+    var(--hud-surface-2) 90%
+  );
+  background-size: 200% 100%;
+  animation: hud-shimmer 1.35s ease-in-out infinite;
+}
+
+.skeleton__back {
+  @extend %skeleton-block;
+  width: 11rem;
+  height: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.skeleton__image {
+  @extend %skeleton-block;
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.skeleton__title {
+  @extend %skeleton-block;
+  width: 14rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.skeleton__line {
+  @extend %skeleton-block;
+  width: 100%;
+  max-width: 16rem;
+  height: 1rem;
+  margin-bottom: 0.65rem;
+
+  &:nth-child(2) {
+    max-width: 12rem;
   }
+  &:nth-child(3) {
+    max-width: 14rem;
+  }
+  &:nth-child(4) {
+    max-width: 10rem;
+  }
+}
+
+.characterpage {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 60vh;
+}
+
+.characterpage__character {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 52rem;
+  padding: 1.25rem;
+  border: 1px solid var(--hud-border);
+  border-radius: var(--hud-radius);
+  background: var(--hud-surface);
+  box-shadow: var(--hud-shadow);
+}
+
+.characterpage__characterinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: min(100%, 16rem);
+}
